@@ -110,8 +110,7 @@ void Fallout4GamePlugins::writePluginList(const IPluginList *pluginList,
   }
 }
 
-bool Fallout4GamePlugins::readPluginList(MOBase::IPluginList *pluginList,
-                                         bool useLoadOrder)
+bool Fallout4GamePlugins::readPluginList(MOBase::IPluginList *pluginList)
 {
   QStringList plugins = pluginList->pluginNames();
   QStringList primaryPlugins = organizer()->managedGame()->primaryPlugins();
