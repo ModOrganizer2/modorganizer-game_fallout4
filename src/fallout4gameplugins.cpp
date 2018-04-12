@@ -37,7 +37,7 @@ void Fallout4GamePlugins::getLoadOrder(QStringList &loadOrder) {
     loadOrder = readLoadOrderList(m_Organizer->pluginList(), loadOrderPath);
   }
   else {
-    loadOrder = readPluginList(m_Organizer->pluginList(), pluginsPath);
+    loadOrder = readPluginList(m_Organizer->pluginList());
   }
 }
 
@@ -110,8 +110,7 @@ void Fallout4GamePlugins::writePluginList(const IPluginList *pluginList,
   }
 }
 
-QStringList Fallout4GamePlugins::readPluginList(MOBase::IPluginList *pluginList,
-                                         const QString &filePath)
+QStringList Fallout4GamePlugins::readPluginList(MOBase::IPluginList *pluginList)
 {
   QStringList plugins = pluginList->pluginNames();
   QStringList primaryPlugins = organizer()->managedGame()->primaryPlugins();
