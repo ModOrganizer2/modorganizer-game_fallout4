@@ -8,6 +8,7 @@
 #include <pluginsetting.h>
 #include <executableinfo.h>
 #include <gamebryolocalsavegames.h>
+#include <gamebryomoddatachecker.h>
 #include <creationgameplugins.h>
 #include "versioninfo.h"
 
@@ -38,6 +39,7 @@ bool GameFallout4::init(IOrganizer *moInfo)
   registerFeature<ScriptExtender>(new Fallout4ScriptExtender(this));
   registerFeature<DataArchives>(new Fallout4DataArchives(myGamesPath()));
   registerFeature<LocalSavegames>(new GamebryoLocalSavegames(myGamesPath(), "fallout4custom.ini"));
+  registerFeature<ModDataChecker>(new GamebryoModDataChecker(this));
   registerFeature<SaveGameInfo>(new Fallout4SaveGameInfo(this));
   registerFeature<GamePlugins>(new CreationGamePlugins(moInfo));
   registerFeature<UnmanagedMods>(new Fallout4UnmangedMods(this));
