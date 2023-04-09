@@ -64,12 +64,11 @@ void GameFallout4::detectGame()
 QList<ExecutableInfo> GameFallout4::executables() const
 {
   return QList<ExecutableInfo>()
-      << ExecutableInfo("F4SE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
-      << ExecutableInfo("Fallout 4", findInGameFolder(binaryName()))
-      << ExecutableInfo("Fallout Launcher", findInGameFolder(getLauncherName()))
-      << ExecutableInfo("Creation Kit", findInGameFolder("CreationKit.exe")).withSteamAppId("1946160")
-      << ExecutableInfo("LOOT", QFileInfo(getLootPath())).withArgument("--game=\"Fallout4\"")
-         ;
+    << ExecutableInfo("F4SE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
+    << ExecutableInfo("Fallout 4", findInGameFolder(binaryName()))
+    << ExecutableInfo("Fallout Launcher", findInGameFolder(getLauncherName()))
+    << ExecutableInfo("Creation Kit", findInGameFolder("CreationKit.exe")).withSteamAppId("1946160")
+    << ExecutableInfo("LOOT", QFileInfo(getLootPath())).withArgument("--game=\"Fallout4\"");
 }
 
 QList<ExecutableForcedLoadSetting> GameFallout4::executableForcedLoads() const
