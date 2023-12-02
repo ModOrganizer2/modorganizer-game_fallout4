@@ -3,8 +3,7 @@
 #include <QString>
 #include <QStringList>
 
-Fallout4ScriptExtender::Fallout4ScriptExtender(GameGamebryo const *game) :
-  GamebryoScriptExtender(game)
+Fallout4ScriptExtender::Fallout4ScriptExtender(GameGamebryo const *game) : GamebryoScriptExtender(game)
 {
 }
 
