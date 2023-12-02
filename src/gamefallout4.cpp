@@ -40,7 +40,7 @@ bool GameFallout4::init(IOrganizer *moInfo)
 
   registerFeature<ScriptExtender>(new Fallout4ScriptExtender(this));
   registerFeature<DataArchives>(new Fallout4DataArchives(myGamesPath()));
-  registerFeature<LocalSavegames>(new GamebryoLocalSavegames(myGamesPath(), "fallout4custom.ini"));
+  registerFeature<LocalSavegames>(new GamebryoLocalSavegames(myGamesPath(), "Fallout4Custom.ini"));
   registerFeature<ModDataChecker>(new Fallout4ModDataChecker(this));
   registerFeature<ModDataContent>(new Fallout4ModDataContent(this));
   registerFeature<SaveGameInfo>(new GamebryoSaveGameInfo(this));
@@ -64,12 +64,11 @@ void GameFallout4::detectGame()
 QList<ExecutableInfo> GameFallout4::executables() const
 {
   return QList<ExecutableInfo>()
-      << ExecutableInfo("F4SE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
-      << ExecutableInfo("Fallout 4", findInGameFolder(binaryName()))
-      << ExecutableInfo("Fallout Launcher", findInGameFolder(getLauncherName()))
-      << ExecutableInfo("Creation Kit", findInGameFolder("CreationKit.exe")).withSteamAppId("1946160")
-      << ExecutableInfo("LOOT", QFileInfo(getLootPath())).withArgument("--game=\"Fallout4\"")
-         ;
+    << ExecutableInfo("F4SE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
+    << ExecutableInfo("Fallout 4", findInGameFolder(binaryName()))
+    << ExecutableInfo("Fallout Launcher", findInGameFolder(getLauncherName()))
+    << ExecutableInfo("Creation Kit", findInGameFolder("CreationKit.exe")).withSteamAppId("1946160")
+    << ExecutableInfo("LOOT", QFileInfo(getLootPath())).withArgument("--game=\"Fallout4\"");
 }
 
 QList<ExecutableForcedLoadSetting> GameFallout4::executableForcedLoads() const
@@ -90,18 +89,17 @@ QString GameFallout4::localizedName() const
 
 QString GameFallout4::author() const
 {
-  return "Tannin";
+  return "Tannin & MO2 Team";
 }
 
 QString GameFallout4::description() const
 {
-  return tr("Adds support for the game Fallout 4.\n"
-            "Splash by %1").arg("nekoyoubi");
+  return tr("Adds support for the game Fallout 4.\n" "Splash by %1").arg("nekoyoubi");
 }
 
 MOBase::VersionInfo GameFallout4::version() const
 {
-  return VersionInfo(1, 7, 0, VersionInfo::RELEASE_FINAL);
+  return VersionInfo(1, 8, 1, VersionInfo::RELEASE_FINAL);
 }
 
 QList<PluginSetting> GameFallout4::settings() const
@@ -116,15 +114,15 @@ void GameFallout4::initializeProfile(const QDir &path, ProfileSettings settings)
   }
 
   if (settings.testFlag(IPluginGame::CONFIGURATION)) {
-    if (settings.testFlag(IPluginGame::PREFER_DEFAULTS)
-        || !QFileInfo(myGamesPath() + "/fallout4.ini").exists()) {
-      copyToProfile(gameDirectory().absolutePath(), path, "fallout4_default.ini", "fallout4.ini");
-    } else {
-      copyToProfile(myGamesPath(), path, "fallout4.ini");
+    if (settings.testFlag(IPluginGame::PREFER_DEFAULTS) || !QFileInfo(myGamesPath() + "/Fallout4.ini").exists()) {
+      copyToProfile(gameDirectory().absolutePath(), path, "Fallout4_Default.ini", "Fallout4.ini");
+    }
+    else {
+      copyToProfile(myGamesPath(), path, "Fallout4.ini");
     }
 
-    copyToProfile(myGamesPath(), path, "fallout4prefs.ini");
-	copyToProfile(myGamesPath(), path, "fallout4custom.ini");
+    copyToProfile(myGamesPath(), path, "Fallout4Prefs.ini");
+    copyToProfile(myGamesPath(), path, "Fallout4Custom.ini");
   }
 }
 
@@ -149,8 +147,16 @@ QString GameFallout4::steamAPPId() const
 }
 
 QStringList GameFallout4::primaryPlugins() const {
-  QStringList plugins = {"fallout4.esm", "dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm",
-          "dlcworkshop03.esm", "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
+  QStringList plugins = {
+    "fallout4.esm",
+    "dlcrobot.esm",
+    "dlcworkshop01.esm",
+    "dlccoast.esm",
+    "dlcworkshop02.esm",
+    "dlcworkshop03.esm",
+    "dlcnukaworld.esm",
+    "dlcultrahighresolution.esm"
+  };
 
   plugins.append(CCPlugins());
 
@@ -159,7 +165,7 @@ QStringList GameFallout4::primaryPlugins() const {
 
 QStringList GameFallout4::gameVariants() const
 {
-  return { "Regular" };
+  return {"Regular"};
 }
 
 QString GameFallout4::gameShortName() const
@@ -174,13 +180,20 @@ QString GameFallout4::gameNexusName() const
 
 QStringList GameFallout4::iniFiles() const
 {
-    return { "fallout4.ini", "fallout4prefs.ini", "fallout4custom.ini" };
+  return {"Fallout4.ini", "Fallout4Prefs.ini", "Fallout4Custom.ini"};
 }
 
 QStringList GameFallout4::DLCPlugins() const
 {
-  return {"dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm", "dlcworkshop03.esm",
-	      "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
+  return {
+    "dlcrobot.esm",
+    "dlcworkshop01.esm",
+    "dlccoast.esm",
+    "dlcworkshop02.esm",
+    "dlcworkshop03.esm",
+    "dlcnukaworld.esm",
+    "dlcultrahighresolution.esm"
+  };
 }
 
 QStringList GameFallout4::CCPlugins() const
