@@ -41,8 +41,7 @@ QStringList Fallout4UnmangedMods::secondaryFiles(const QString &modName) const {
 
 QString Fallout4UnmangedMods::displayName(const QString &modName) const
 {
-  // unlike in earlier games, in fallout 4 the file name doesn't correspond to
-  // the public name
+  // unlike in earlier games, in fallout 4 the file name doesn't correspond to the public name
   if (modName.compare("dlcrobot", Qt::CaseInsensitive) == 0) {
     return "Automatron";
   } else if (modName.compare("dlcworkshop01", Qt::CaseInsensitive) == 0) {

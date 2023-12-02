@@ -95,13 +95,12 @@ QString GameFallout4::author() const
 
 QString GameFallout4::description() const
 {
-  return tr("Adds support for the game Fallout 4.\n"
-            "Splash by %1").arg("nekoyoubi");
+  return tr("Adds support for the game Fallout 4.\n" "Splash by %1").arg("nekoyoubi");
 }
 
 MOBase::VersionInfo GameFallout4::version() const
 {
-  return VersionInfo(1, 8, 0, VersionInfo::RELEASE_FINAL);
+  return VersionInfo(1, 8, 1, VersionInfo::RELEASE_FINAL);
 }
 
 QList<PluginSetting> GameFallout4::settings() const
@@ -123,8 +122,8 @@ void GameFallout4::initializeProfile(const QDir &path, ProfileSettings settings)
       copyToProfile(myGamesPath(), path, "fallout4.ini");
     }
 
-    copyToProfile(myGamesPath(), path, "fallout4prefs.ini");
-	copyToProfile(myGamesPath(), path, "fallout4custom.ini");
+    copyToProfile(myGamesPath(), path, "Fallout4Prefs.ini");
+	copyToProfile(myGamesPath(), path, "Fallout4Custom.ini");
   }
 }
 
@@ -149,8 +148,7 @@ QString GameFallout4::steamAPPId() const
 }
 
 QStringList GameFallout4::primaryPlugins() const {
-  QStringList plugins = {"fallout4.esm", "dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm",
-          "dlcworkshop03.esm", "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
+  QStringList plugins = {"fallout4.esm", "dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm", "dlcworkshop03.esm", "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
 
   plugins.append(CCPlugins());
 
@@ -179,8 +177,7 @@ QStringList GameFallout4::iniFiles() const
 
 QStringList GameFallout4::DLCPlugins() const
 {
-  return {"dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm", "dlcworkshop03.esm",
-	      "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
+  return {"dlcrobot.esm", "dlcworkshop01.esm", "dlccoast.esm", "dlcworkshop02.esm", "dlcworkshop03.esm", "dlcnukaworld.esm", "dlcultrahighresolution.esm"};
 }
 
 QStringList GameFallout4::CCPlugins() const
