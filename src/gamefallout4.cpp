@@ -113,7 +113,8 @@ MOBase::VersionInfo GameFallout4::version() const
 
 QList<PluginSetting> GameFallout4::settings() const
 {
-  return QList<PluginSetting>();
+  return {PluginSetting("fo4london_downloads", "allow Fallout London downloads",
+                        QVariant(false))};
 }
 
 MappingType GameFallout4::mappings() const
@@ -225,6 +226,15 @@ QString GameFallout4::gameShortName() const
 QString GameFallout4::gameNexusName() const
 {
   return "fallout4";
+}
+
+QStringList GameFallout4::validShortNames() const
+{
+  QStringList shortNames{"Fallout4"};
+  if (m_Organizer->pluginSetting(name(), "fo4london_downloads").toBool()) {
+    shortNames.append("Fallout4London");
+  }
+  return shortNames;
 }
 
 QStringList GameFallout4::iniFiles() const
